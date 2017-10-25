@@ -1,3 +1,3 @@
 # MachineLearning
 
-Projetos aprendendo machine Learning
+Projetos Machine Learning
