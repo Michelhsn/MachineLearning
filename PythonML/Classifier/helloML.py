@@ -1,7 +1,10 @@
-from sklearn import tree
-
+### Autor: Michel Nascimento
+### Email: michel_henrique_911@hotmail.com
+### Data: 25/10/17
 
 ### Prever a nome da matéria, baseado na nota e nas horas de estudo
+
+from sklearn import tree
 ### dados = [Nota, HorasDeEstudo] ; resultado = [Materia]
 ### sendo 1 para RH e 0 para WebII :D :D :'(
 
