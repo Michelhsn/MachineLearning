@@ -1,5 +1,6 @@
 ### Autor: Michel Nascimento
 ### Email: michel_henrique_911@hotmail.com
+### Data: 18/10/17
 
 ## Análise de Regressão logística
 ## Prática e resultado
