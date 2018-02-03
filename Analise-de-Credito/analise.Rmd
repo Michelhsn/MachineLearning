@@ -1,17 +1,14 @@
 ---
-title: "Analise de Cr�f�'�,©dito - Machine Learning"
+title: "Analise de Crédito - Machine Learning"
 author: "Michel H S Nascimento"
 date: "2 de fevereiro de 2018"
-output:
-  word_document: default
-  pdf_document: default
-  html_document: default
+output: html_document
 ---
 
 
 ## Conhecendo os dados
 
-Este documento trata de um estudo sobre machine learning, através da execução de exercícios de um curso de ML da Udemy que visa analisar a disponibilidade de crédito das pessoas através de um conjunto de dados.
+Este documento trata de um estudo sobre machine learning, através da execução de exercícios de um curso de ML da Udemy que visa analisar a disponibilidade de crédito das pessoas atravÃ©s de um conjunto de dados.
 
 A biblioteca usada para o algoritmo de ML foi a "e1071".
 
@@ -28,7 +25,7 @@ dados_creditos = read.csv(file.choose())
 head(dados_creditos)
 ```
 
-Pode perceber no conjunto de dados as características de todas as intâncias na massa de dados, onde seu atributo final referente a classe descreve se tal instância é tido como um bom ou mal pagador.
+Pode perceber no conjunto de dados as características de todas as instâncias na massa de dados, onde seu atributo final referente a classe descreve se tal instância é tida como de um bom ou mau pagador.
 
 ## Criando Amostras
 
@@ -50,9 +47,9 @@ modelo = naiveBayes(class ~., dados_treino)
 modelo
 ```
 ## Previsão
-Usa-se o modelo obtido para a análise preditiva sobre a parcela de dados reservadas para o teste, assim os valores podem ser confrontados de modo que se possa verificar a confiança do modelo:
+Usa-se o modelo obtido para a análise preditiva sobre a parcela de dados reservadas para o teste, assim os valores podem ser confrontados de modo que se possa verificar a confianãa do modelo:
 
-```{r previsão}
+```{r previsÃ£o}
 previsao = predict(modelo, dados_teste)
 previsao
 ```
@@ -78,11 +75,11 @@ previsao_deployment = predict(modelo, novos_dados)
 previsao_deployment
 ```
 
-## An�lise de Atributos
+## Análise de Atributos
 
 ```{r atributos}
 library(e1071)
-# Verificando o n�vel de confian�a do modelo sem alterar n�mero de atributos
+# Verificando o nível de confiança do modelo sem alterar número de atributos
 modelo_svm = svm(class ~., dados_treino)
 
 previsao_svm = predict(modelo_svm, dados_teste)
@@ -101,7 +98,7 @@ previsao_atributos = predict(modelo_atributos, dados_teste)
 
 m_confusao_svm_att = table(dados_teste$class, previsao_atributos)
 
-taxa_good_att = (m_confusao_svm_att[1] + m_confusao_svm_att[4])/sum(m_confusao_svm_att)
+taxa_good_att = (m_confusao_svm_att[1] + m_confusao_svm_att[4])/sum(m_confusao_svm)
 
 
 ```
