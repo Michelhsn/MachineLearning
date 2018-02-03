@@ -1,14 +1,17 @@
 ---
-title: "Analise de Crédito - Machine Learning"
+title: "Analise de CrÃƒÆ’Ã‚Â©dito - Machine Learning"
 author: "Michel H S Nascimento"
 date: "2 de fevereiro de 2018"
-output: html_document
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
 ---
 
 
 ## Conhecendo os dados
 
-Este documento trata de um estudo sobre machine learning, através da execução de exercícios de um curso de ML da Udemy que visa analisar a disponibilidade de crédito das pessoas através de um conjunto de dados.
+Este documento trata de um estudo sobre machine learning, atravÃ©s da execuÃ§Ã£o de exercÃ­cios de um curso de ML da Udemy que visa analisar a disponibilidade de crÃ©dito das pessoas atravÃ©s de um conjunto de dados.
 
 A biblioteca usada para o algoritmo de ML foi a "e1071".
 
@@ -17,7 +20,7 @@ A biblioteca usada para o algoritmo de ML foi a "e1071".
 library(e1071)
 ```
 
-Importando os dados de créditos:
+Importando os dados de crÃ©ditos:
 
 ```{r import}
 dados_creditos = read.csv(file.choose())
@@ -25,11 +28,11 @@ dados_creditos = read.csv(file.choose())
 head(dados_creditos)
 ```
 
-Pode perceber no conjunto de dados as características de todas as intâncias na massa de dados, onde seu atributo final referente a classe descreve se tal instância é tido como um bom ou mal pagador.
+Pode perceber no conjunto de dados as caracterÃ­sticas de todas as intÃ¢ncias na massa de dados, onde seu atributo final referente a classe descreve se tal instÃ¢ncia Ã© tido como um bom ou mal pagador.
 
 ## Criando Amostras
 
-Para uma análise mais adequada de resultados para posteriormente colocá-los em produção com uma certa confiança, se faz necessário a divisão dos dados em amostras para testes e para treino:
+Para uma anÃ¡lise mais adequada de resultados para posteriormente colocÃ¡-los em produÃ§Ã£o com uma certa confianÃ§a, se faz necessÃ¡rio a divisÃ£o dos dados em amostras para testes e para treino:
 
 ```{r testeetreino}
 amostras = sample(2, 1000, replace = T, prob = c(0.7,0.3))
@@ -38,23 +41,23 @@ dados_treino = dados_creditos[amostras==1,]
 dados_teste = dados_creditos[amostras==2,]
 ```
 
-## Criação do Modelo
+## CriaÃ§Ã£o do Modelo
 
-Cria-se o modelo para análise dos dados, este é feito com base na função da biblioteca que foi carregada, neste caso naivebayes; Tal modelo permite identificar relações de proporcionalidade entre os atributos definidos na massa de dados:
+Cria-se o modelo para anÃ¡lise dos dados, este Ã© feito com base na funÃ§Ã£o da biblioteca que foi carregada, neste caso naivebayes; Tal modelo permite identificar relaÃ§Ãµes de proporcionalidade entre os atributos definidos na massa de dados:
 
 ```{r modelo}
 modelo = naiveBayes(class ~., dados_treino)
 modelo
 ```
-## Previsão
-Usa-se o modelo obtido para a análise preditiva sobre a parcela de dados reservadas para o teste, assim os valores podem ser confrontados de modo que se possa verificar a confiança do modelo:
+## PrevisÃ£o
+Usa-se o modelo obtido para a anÃ¡lise preditiva sobre a parcela de dados reservadas para o teste, assim os valores podem ser confrontados de modo que se possa verificar a confianÃ§a do modelo:
 
-```{r previsão}
+```{r previsÃ£o}
 previsao = predict(modelo, dados_teste)
 previsao
 ```
 
-Matriz Confusão
+Matriz ConfusÃ£o
 
 
 ```{r confusao}
@@ -67,7 +70,7 @@ taxa
 ```
 ## Deployment
 
-Faz-se a análise a partir de um arquivo externo de possíveis novas buscas por crédito com o modelo produzido:
+Faz-se a anÃ¡lise a partir de um arquivo externo de possÃ­veis novas buscas por crÃ©dito com o modelo produzido:
 
 ```{r deplyment}
 novos_dados = read.csv(file.choose())
@@ -75,11 +78,11 @@ previsao_deployment = predict(modelo, novos_dados)
 previsao_deployment
 ```
 
-## An�lise de Atributos
+## Análise de Atributos
 
 ```{r atributos}
 library(e1071)
-# Verificando o n�vel de confian�a do modelo sem alterar n�mero de atributos
+# Verificando o nível de confiança do modelo sem alterar número de atributos
 modelo_svm = svm(class ~., dados_treino)
 
 previsao_svm = predict(modelo_svm, dados_teste)
