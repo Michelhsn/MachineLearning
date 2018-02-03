@@ -2,13 +2,15 @@
 title: "Analise de Crédito - Machine Learning"
 author: "Michel H S Nascimento"
 date: "2 de fevereiro de 2018"
-output: html_document
+output:
+  word_document: default
+  html_document: default
 ---
 
 
 ## Conhecendo os dados
 
-Este documento trata de um estudo sobre machine learning, através da execução de exercícios de um curso de ML da Udemy que visa analisar a disponibilidade de crédito das pessoas atravÃ©s de um conjunto de dados.
+Este documento trata de um estudo sobre machine learning, através da execução de exercícios de um curso de ML da Udemy que visa analisar a disponibilidade de crédito das pessoas através de um conjunto de dados.
 
 A biblioteca usada para o algoritmo de ML foi a "e1071".
 
