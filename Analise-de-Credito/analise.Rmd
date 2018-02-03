@@ -74,3 +74,31 @@ novos_dados = read.csv(file.choose())
 previsao_deployment = predict(modelo, novos_dados)
 previsao_deployment
 ```
+
+## Análise de Atributos
+
+```{r atributos}
+library(e1071)
+# Verificando o nível de confiança do modelo sem alterar número de atributos
+modelo_svm = svm(class ~., dados_treino)
+
+previsao_svm = predict(modelo_svm, dados_teste)
+
+m_confusao_svm = table(dados_teste$class, previsao_svm)
+
+taxa_good = (m_confusao_svm[1] + m_confusao_svm[4])/sum(m_confusao_svm)
+
+library(FSelector)
+
+random.forest.importance(class ~., dados_creditos)
+
+modelo_atributos = svm(class ~ checking_status + duration + credit_history, dados_treino)
+
+previsao_atributos = predict(modelo_atributos, dados_teste)
+
+m_confusao_svm_att = table(dados_teste$class, previsao_atributos)
+
+taxa_good_att = (m_confusao_svm_att[1] + m_confusao_svm_att[4])/sum(m_confusao_svm_att)
+
+
+```
