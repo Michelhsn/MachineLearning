@@ -2,6 +2,7 @@
 # data(agaricus.test, package='xgboost')
 # train <- agaricus.train
 # test <- agaricus.test
+library(xgboost)
 
 dados_creditos = read.csv(file.choose(),header = TRUE, sep = ';')
 amostras = sample(2, 1000, replace = T, prob = c(0.8,0.2))

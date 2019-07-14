@@ -1,5 +1,6 @@
 library(e1071)
 library(FSelector)
+library(randomForest)
 
 
 dados_creditos = read.csv(file.choose(),header = TRUE, sep = ';')
@@ -9,7 +10,7 @@ dados_treino = dados_creditos[amostras==1,]
 dados_teste = dados_creditos[amostras==2,]
 
 modelo_naive = naiveBayes(CLASSE ~., dados_treino)
-modelo_svm = svm(CLASSE ~., dados_treino)
+modelo_svm = randomForest(CLASSE ~., dados_treino)
 modelo_naive_atr = naiveBayes(CLASSE ~ CHEQUEESPECIAL + USO_CREDITO + HISTORICO_CREDITO + BALANCO_ATUAL 
                               + BALANCO_MEDIO_CREDITO + OUTRASFUNCOES + OUTROSPLANOSPGTO + IDADE
                               + PROPOSITO + TIPOSBENS + EMPREGADO + LOCAL + EMPREGO + RESIDENCIA + TRABAESTRANGEIRO , dados_treino)
