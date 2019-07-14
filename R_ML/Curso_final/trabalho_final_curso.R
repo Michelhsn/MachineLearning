@@ -37,3 +37,24 @@ atributos_importance = random.forest.importance(CLASSE ~., dados_creditos)
 importance_order <- atributos_importance[order(atributos_importance$attr_importance),] 
 importance_order
 
+library(xgboost)
+library(readr)
+library(stringr)
+library(caret)
+library(car)
+
+xgb <- xgboost(data = data.matrix(dados_treino), 
+               label = dados_treino$CLASSE, 
+               eta = 0.1,
+               max_depth = 15, 
+               nround=25, 
+               subsample = 0.5,
+               colsample_bytree = 0.5,
+               seed = 1,
+               eval_metric = "merror",
+               objective = "multi:softprob",
+               num_class = 12,
+               nthread = 3
+)
+
+y_pred <- predict(xgb, data.matrix(dados_teste))
